@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import type { SectorFeatureCollection, SectorDivision, SectorFeature, AreaCategory } from '../../types';
-import { sectorColors, getAreaColor, getPatternStyle, hexWithOpacity } from '../../utils/symbology';
+import { sectorColors, getAreaColor, getPatternStyle } from '../../utils/symbology';
 import AdvancedDrawingTools from './AdvancedDrawingTools';
 import MapToolbar from './MapToolbar';
 import HelpPanel from './HelpPanel';

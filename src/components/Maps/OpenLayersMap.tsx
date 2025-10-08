@@ -11,11 +11,10 @@ import { Style, Fill, Stroke } from 'ol/style';
 import Overlay from 'ol/Overlay';
 import { defaults as defaultControls, ScaleLine } from 'ol/control';
 import { fromLonLat } from 'ol/proj';
-import LayerGroup from 'ol/layer/Group';
 import type { Feature } from 'ol';
 import type { Geometry } from 'ol/geom';
 import type { SectorFeatureCollection, SectorDivision, SectorProperties, AreaCategory } from '../../types';
-import { sectorColors, getAreaColor, getPatternStyle, hexWithOpacity } from '../../utils/symbology';
+import { sectorColors, getAreaColor, getPatternStyle } from '../../utils/symbology';
 
 interface OpenLayersMapProps {
   sectorsData: Record<SectorDivision, SectorFeatureCollection | null>;

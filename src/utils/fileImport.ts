@@ -433,8 +433,8 @@ export async function parseERDAS(file: File): Promise<RasterData> {
 
   // Try to extract basic information from header (first 512 bytes typically)
   // This is a simplified approach - full ERDAS parsing is very complex
-  let width = 512;
-  let height = 512;
+  const width = 512;
+  const height = 512;
 
   // Create canvas
   const canvas = document.createElement('canvas');

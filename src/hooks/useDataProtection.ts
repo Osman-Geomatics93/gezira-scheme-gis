@@ -18,7 +18,6 @@ export const useDataProtection = (options: DataProtectionOptions = {}) => {
     disableDevTools = true,
     disableTextSelection = false,
     disableCopy = false,
-    showWatermark = false,
   } = options;
 
   const [devToolsOpen, setDevToolsOpen] = useState(false);

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import maplibregl from 'maplibre-gl';
 import * as turf from '@turf/turf';
 import type { SectorFeatureCollection, SectorDivision, SectorFeature, AreaCategory } from '../../types';
-import { sectorColors, hexWithOpacity } from '../../utils/symbology';
+import { sectorColors } from '../../utils/symbology';
 import SymbologyControl, { type SymbologySettings } from './SymbologyControl';
 import FileImport from './FileImport';
 import LayerManager from './LayerManager';

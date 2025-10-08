@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDataProtection } from '../../hooks/useDataProtection';
 
 interface DataProtectionProps {

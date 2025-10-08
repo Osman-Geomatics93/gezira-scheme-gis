@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import maplibregl from 'maplibre-gl';
 import type { SectorFeatureCollection, SectorDivision, SectorFeature, AreaCategory } from '../../types';
-import { sectorColors, getAreaColor, hexWithOpacity } from '../../utils/symbology';
+import { sectorColors, hexWithOpacity } from '../../utils/symbology';
 
 interface MapLibreMapProps {
   sectorsData: Record<SectorDivision, SectorFeatureCollection | null>;

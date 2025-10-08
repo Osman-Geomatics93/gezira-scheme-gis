@@ -19,5 +19,11 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    rules: {
+      // Relax 'any' type restrictions for GIS data parsing and map interactions
+      '@typescript-eslint/no-explicit-any': 'warn',
+      // Allow fast-refresh for context exports
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    },
   },
 ])
