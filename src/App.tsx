@@ -14,7 +14,7 @@ import type { MapLibrary, SectorDivision, SectorFeature, AreaCategory } from './
 function AppContent() {
   const { isAuthenticated, loading: authLoading } = useAuth();
   console.log('App component rendering');
-  const { sectorsData, loading, error, dataSource, reloadData } = useSectorData();
+  const { sectorsData, loading, error, reloadData } = useSectorData();
   console.log('Loading:', loading, 'Error:', error, 'Data:', sectorsData);
   const [selectedMapLibrary, setSelectedMapLibrary] = useState<MapLibrary>('leaflet');
   const [selectedSector, setSelectedSector] = useState<SectorDivision | null>(null);

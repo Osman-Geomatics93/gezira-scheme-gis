@@ -456,7 +456,7 @@ export default function LayerManager({
                             </button>
                           </div>
 
-                        {layer.showLabels && (layer.data as any).features?.[0]?.properties && (
+                        {layer.showLabels && 'features' in layer.data && layer.data.features?.[0]?.properties && (
                           <div className="space-y-3">
                             <div>
                               <label className="block text-xs text-gray-500 mb-1">Label Field:</label>
@@ -466,7 +466,7 @@ export default function LayerManager({
                                 className="w-full px-2 py-1.5 text-xs border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                               >
                                 <option value="">None</option>
-                                {Object.keys(layer.data.features[0].properties).map(field => (
+                                {'features' in layer.data && layer.data.features[0] && Object.keys(layer.data.features[0].properties).map(field => (
                                   <option key={field} value={field}>{field}</option>
                                 ))}
                               </select>

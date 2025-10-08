@@ -10,17 +10,14 @@ interface AdvancedDrawingToolsProps {
   map: L.Map | null;
   onFeatureCreated?: () => void;
   showInstructions?: boolean;
-  sectorsData?: Record<string, any>;
+  sectorsData?: Record<string, unknown>;
 }
-
-type DrawingTool = 'marker' | 'polyline' | 'polygon' | 'rectangle' | 'circle' | 'edit' | 'delete' | null;
 
 export default function AdvancedDrawingTools({ map, onFeatureCreated, showInstructions = true, sectorsData }: AdvancedDrawingToolsProps) {
   const { hasRole } = useAuth();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [measurements, setMeasurements] = useState({ area: 0, perimeter: 0 });
   const [drawnLayer, setDrawnLayer] = useState<L.Layer | null>(null);
-  const [activeTool, setActiveTool] = useState<DrawingTool>(null);
   const [liveMeasurement, setLiveMeasurement] = useState<string>('');
   const canEdit = hasRole(['admin', 'editor']);
   const drawnItemsRef = useRef<L.FeatureGroup | null>(null);
@@ -99,7 +96,6 @@ export default function AdvancedDrawingTools({ map, onFeatureCreated, showInstru
           remove: true,
           edit: {
             selectedPathOptions: {
-              maintainColor: true,
               opacity: 0.8,
               dashArray: '10, 10',
             },

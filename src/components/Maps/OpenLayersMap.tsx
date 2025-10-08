@@ -205,7 +205,7 @@ export default function OpenLayersMap({ sectorsData, selectedSector, selectedAre
         mapRef.current = null;
       }
     };
-  }, []);
+  }, [onFeatureClick]);
 
   useEffect(() => {
     if (!mapRef.current) return;

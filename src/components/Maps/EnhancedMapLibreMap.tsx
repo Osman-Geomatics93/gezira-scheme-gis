@@ -155,8 +155,7 @@ export default function EnhancedMapLibreMap({
       style: basemapStyles.maptilerStreets, // Use MapTiler Streets as default
       center: [33.0, 14.35],
       zoom: 9,
-      attributionControl: true,
-      projection: 'mercator', // Start with mercator, can switch to globe
+      attributionControl: { compact: false },
     });
 
     const map = mapRef.current;
@@ -173,8 +172,7 @@ export default function EnhancedMapLibreMap({
       positionOptions: {
         enableHighAccuracy: true
       },
-      trackUserLocation: true,
-      showUserHeading: true
+      trackUserLocation: true
     }), 'top-right');
 
     map.addControl(new maplibregl.ScaleControl({
@@ -1235,20 +1233,28 @@ export default function EnhancedMapLibreMap({
           return; // Skip vector layer rendering for raster layers
         }
 
+        // Type guard: at this point, layer.data must be a FeatureCollection
+        if (!('features' in layer.data)) {
+          console.error('Invalid vector layer data');
+          return;
+        }
+
+        const vectorData = layer.data;
+
         // Add vector source
         map.addSource(layer.id, {
           type: 'geojson',
-          data: layer.data as any
+          data: vectorData
         });
 
         // Determine geometry types in the layer
-        const hasPolygons = layer.data.features.some(f =>
+        const hasPolygons = vectorData.features.some(f =>
           f.geometry.type === 'Polygon' || f.geometry.type === 'MultiPolygon'
         );
-        const hasLines = layer.data.features.some(f =>
+        const hasLines = vectorData.features.some(f =>
           f.geometry.type === 'LineString' || f.geometry.type === 'MultiLineString'
         );
-        const hasPoints = layer.data.features.some(f =>
+        const hasPoints = vectorData.features.some(f =>
           f.geometry.type === 'Point' || f.geometry.type === 'MultiPoint'
         );
 

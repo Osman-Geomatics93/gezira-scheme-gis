@@ -52,7 +52,8 @@ export default function EditableAttributeTable({
 
       data.features.forEach((feature, index) => {
         // Use the database ID (from backend) or OBJECTID_1 (from local files) or fallback to index
-        const rowId = feature.properties.id || feature.properties.OBJECTID_1 || feature.id || index;
+        const featureWithId = feature as typeof feature & { id?: number; properties: typeof feature.properties & { id?: number } };
+        const rowId = featureWithId.properties.id || feature.properties.OBJECTID_1 || featureWithId.id || index;
 
         rows.push({
           ...feature.properties,
@@ -168,7 +169,7 @@ export default function EditableAttributeTable({
       };
 
       const updates = Object.entries(editedValues).map(([id, changes]) => {
-        const mappedChanges: Record<string, any> = {};
+        const mappedChanges: Record<string, unknown> = {};
 
         Object.entries(changes).forEach(([key, value]) => {
           const backendKey = fieldMapping[key] || key;
@@ -203,11 +204,11 @@ export default function EditableAttributeTable({
           console.log('✅ Data reloaded');
         }
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error('Save error:', error);
       setSaveMessage({
         type: 'error',
-        text: error.message || 'Failed to save changes'
+        text: error instanceof Error ? error.message : 'Failed to save changes'
       });
     } finally {
       setSaving(false);
@@ -224,7 +225,7 @@ export default function EditableAttributeTable({
     }
   };
 
-  const getCellValue = (row: TableRow, field: keyof SectorProperties, rowIndex: number) => {
+  const getCellValue = (row: TableRow, field: keyof SectorProperties) => {
     const rowId = row.id!;
     const editedValue = editedValues[rowId]?.[field];
     return editedValue !== undefined ? editedValue : row[field];
@@ -233,14 +234,6 @@ export default function EditableAttributeTable({
   const isRowEdited = (row: TableRow) => {
     return row.id && editedValues[row.id] !== undefined;
   };
-
-  const editableFields: (keyof SectorProperties)[] = [
-    'Canal_Name',
-    'Name_AR',
-    'Office',
-    'Design_A_F',
-    'Remarks_1'
-  ];
 
   const divisionColors: Record<string, string> = {
     East: 'bg-blue-50 text-blue-700',
@@ -545,7 +538,7 @@ function EditableCell({
   type = 'text',
   className = ''
 }: {
-  value: any;
+  value: string | number | null;
   field: keyof SectorProperties;
   rowIndex: number;
   isEditing: boolean;
@@ -569,7 +562,8 @@ function EditableCell({
         inputRef.current?.select(); // Select all text for easy replacement
       }, 10);
     }
-  }, [isEditing]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isEditing]); // Only re-run when isEditing changes, not when value changes
 
   if (isEditing) {
     return (
