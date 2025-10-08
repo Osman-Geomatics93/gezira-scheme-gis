@@ -575,8 +575,6 @@ export default function EnhancedMapLibreMap({
 
       // Wait for style to load
       map.once('style.load', () => {
-        map.setProjection('mercator');
-
         // Zoom back to Sudan/Gezira area
         map.easeTo({
           center: [33.0, 14.35],

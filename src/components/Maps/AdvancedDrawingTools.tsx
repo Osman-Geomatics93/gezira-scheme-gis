@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet-draw';
 import * as turf from '@turf/turf';
+import type { SectorDivision, SectorFeatureCollection } from '../../types';
 import { useAuth } from '../../context/AuthContext';
 import { sectorsAPI } from '../../services/api';
 import NewFeatureDialog, { type NewFeatureData } from './NewFeatureDialog';
@@ -10,7 +11,7 @@ interface AdvancedDrawingToolsProps {
   map: L.Map | null;
   onFeatureCreated?: () => void;
   showInstructions?: boolean;
-  sectorsData?: Record<string, unknown>;
+  sectorsData?: Record<SectorDivision, SectorFeatureCollection | null>;
 }
 
 export default function AdvancedDrawingTools({ map, onFeatureCreated, showInstructions = true, sectorsData }: AdvancedDrawingToolsProps) {

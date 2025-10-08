@@ -719,7 +719,7 @@ export function calculateBounds(data: GeoJSON.FeatureCollection): [[number, numb
   };
 
   data.features.forEach(feature => {
-    if (feature.geometry) {
+    if (feature.geometry && 'coordinates' in feature.geometry) {
       processCoordinates(feature.geometry.coordinates);
     }
   });

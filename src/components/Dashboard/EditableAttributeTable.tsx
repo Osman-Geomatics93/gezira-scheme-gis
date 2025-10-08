@@ -225,7 +225,7 @@ export default function EditableAttributeTable({
     }
   };
 
-  const getCellValue = (row: TableRow, field: keyof SectorProperties) => {
+  const getCellValue = (row: TableRow, field: keyof SectorProperties, _rowIndex: number) => {
     const rowId = row.id!;
     const editedValue = editedValues[rowId]?.[field];
     return editedValue !== undefined ? editedValue : row[field];

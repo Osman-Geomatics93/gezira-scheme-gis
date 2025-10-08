@@ -69,7 +69,7 @@ export default function MapLibreMap({ sectorsData, selectedSector, selectedAreaC
 
     mapRef.current = new maplibregl.Map({
       container: mapContainerRef.current,
-      style: basemapStyles.osm,
+      style: basemapStyles.osm as any,
       center: [33.0, 14.35],
       zoom: 9,
     });
@@ -95,7 +95,7 @@ export default function MapLibreMap({ sectorsData, selectedSector, selectedAreaC
       select.addEventListener('change', (e) => {
         const target = e.target as HTMLSelectElement;
         const style = basemapStyles[target.value as keyof typeof basemapStyles];
-        mapRef.current?.setStyle(style);
+        mapRef.current?.setStyle(style as any);
       });
     }
 
