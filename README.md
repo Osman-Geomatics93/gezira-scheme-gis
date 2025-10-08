@@ -12,7 +12,7 @@
 
 **A modern, full-stack GIS web application for managing and visualizing the Gezira Irrigation Scheme sectors in Sudan**
 
-[🚀 Features](#-features) • [💻 Demo](#-demo) • [🛠️ Installation](#-installation) • [📚 Documentation](#-documentation) • [🤝 Contributing](#-contributing)
+[🚀 Features](#-features) • [💻 Demo](#-demo) • [🛠️ Installation](#-installation) • [🌐 Deployment](#-deployment) • [📚 Documentation](#-documentation) • [🤝 Contributing](#-contributing)
 
 </div>
 
@@ -312,6 +312,34 @@ PUT    /api/sectors/:id                # Update sector
 POST   /api/sectors/batch-update       # Batch update
 DELETE /api/sectors/:id                # Delete sector (Admin only)
 ```
+
+---
+
+## 🌐 Deployment
+
+### Modern GitHub Deployment with CI/CD
+
+This application is configured for **automated deployment** using GitHub Actions:
+
+- ✅ **Frontend**: GitHub Pages with auto-deployment
+- ✅ **Backend**: Railway with PostgreSQL + PostGIS
+- ✅ **CI/CD**: Automated testing, linting, and deployment
+- ✅ **CDN**: Global distribution via GitHub Pages
+
+#### Quick Deployment
+
+1. **Enable GitHub Pages** in repository settings (Source: GitHub Actions)
+2. **Deploy Backend** to Railway (one-click from GitHub)
+3. **Set Secrets** in GitHub Actions (VITE_API_URL)
+4. **Push to main** → Automatic deployment! 🚀
+
+#### Documentation
+
+- 📘 **[Complete Deployment Guide](GITHUB_PAGES_DEPLOYMENT.md)** - Modern GitHub + Railway setup
+- 📘 **[Alternative Platforms](DEPLOYMENT_GUIDE.md)** - Vercel, Render, and other options
+- 📘 **[Quick Start](DEPLOY_NOW.md)** - Deploy in 10 minutes
+
+**Live Demo**: `https://osman-geomatics93.github.io/gezira-scheme-gis`
 
 ---
 
