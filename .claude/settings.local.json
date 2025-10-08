@@ -22,7 +22,10 @@
       "Bash(git branch:*)",
       "Bash(git push:*)",
       "Bash(git remote remove:*)",
-      "Bash(git remote add:*)"
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(start https://github.com/settings/installations)"
     ],
     "deny": [],
     "ask": []
