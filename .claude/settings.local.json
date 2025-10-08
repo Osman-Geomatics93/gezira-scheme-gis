@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss init:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run seed:*)",
+      "Bash(npm run migrate:*)",
+      "Bash(node:*)",
+      "Bash(curl -s -X POST http://localhost:5000/api/auth/login -H \"Content-Type: application/json\" -d \"{\"\"username\"\":\"\"editor\"\",\"\"password\"\":\"\"editor123\"\"}\")",
+      "Bash(curl -s -X POST http://localhost:5000/api/auth/login -H \"Content-Type: application/json\" -d \"{\"\"username\"\":\"\"viewer\"\",\"\"password\"\":\"\"viewer123\"\"}\")",
+      "Bash(curl -s -X POST http://localhost:5000/api/auth/login -H \"Content-Type: application/json\" -d \"{\"\"username\"\":\"\"admin\"\",\"\"password\"\":\"\"admin123\"\"}\")",
+      "Bash(TOKEN=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc1OTc2MzE2MCwiZXhwIjoxNzYwMzY3OTYwfQ.2rZsRv0ILPtY7VCq5BfV0ZNqhQ0KMa4T85HUq5cQ3vw\")",
+      "Bash(curl -s -X POST http://localhost:5000/api/sectors/batch-update -H \"Content-Type: application/json\" -H \"Authorization: Bearer $TOKEN\" -d \"{\"\"updates\"\":[{\"\"id\"\":1,\"\"canal_name\"\":\"\"Test Canal\"\"}]}\")",
+      "Bash(curl:*)",
+      "Bash(timeout:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
